@@ -1,2 +1,2 @@
-# learnHaskell
+# Haskell-pratice
 pratice Haskell in Codewars
