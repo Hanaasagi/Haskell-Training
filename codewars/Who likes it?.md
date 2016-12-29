@@ -24,3 +24,21 @@ For more than 4 names, the number in and 2 others simply increases.
       | len == 3 = xs !! 0 ++ ", " ++ xs !! 1  ++ " and " ++ xs !! 2 ++ " like this"
       | len > 3 = xs !! 0 ++ ", " ++ xs !! 1  ++ " and " ++ show(len-2) ++ " others like this"
       where len = length xs
+
+####Great Solution  
+
+    module Likes where
+
+    likes :: [String] -> String
+    likes list =
+        unwords [subjects list, message list]
+        
+    subjects []                 = "no one"
+    subjects [x]                = x
+    subjects [x, y]             = unwords [x, "and", y]
+    subjects [x, y, z]          = unwords [x ++ ",", y, "and", z]
+    subjects (x : y : _ : rest) = unwords [x ++ ",", y, "and", show (length rest + 1), "others"]
+
+    message list
+        | length list < 2 = "likes this"
+        | otherwise       = "like this"
