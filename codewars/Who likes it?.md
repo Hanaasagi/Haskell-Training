@@ -12,7 +12,7 @@ Implement a function likes :: [String] -> String, which must take in input array
 
 For more than 4 names, the number in and 2 others simply increases.  
 
-####Solution
+####Solution:
 
     module Likes where
 
@@ -25,7 +25,7 @@ For more than 4 names, the number in and 2 others simply increases.
       | len > 3 = xs !! 0 ++ ", " ++ xs !! 1  ++ " and " ++ show(len-2) ++ " others like this"
       where len = length xs
 
-####Great Solution  
+####Great Solution:  
 
     module Likes where
 

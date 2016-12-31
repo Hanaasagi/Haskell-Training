@@ -10,7 +10,7 @@ Examples input/output:
     XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
     XO("zzoo") => false
 
-####Solution  
+####Solution:  
 
     module Codewars.Kata.XO where
 
@@ -29,7 +29,7 @@ Examples input/output:
 
 
 
-####Great Solution
+####Great Solution:
 
     module Codewars.Kata.XO where
 

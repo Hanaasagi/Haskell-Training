@@ -8,7 +8,7 @@ Finish the solution so that it returns the sum of all the multiples of 3 or 5 be
 
 *Courtesy of ProjectEuler.net*  
 
-####Solution  
+####Solution:  
 
     module MultiplesOf3And5 where
 

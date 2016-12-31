@@ -1,8 +1,8 @@
-####Description  
+####Description:  
 Write function avg which calaculates average of numbers in given list.  
 
 
-####Solution  
+####Solution:  
 
     module Average where
 
