@@ -18,12 +18,12 @@ All input strings will be nonempty, and will only consist of open parentheses '(
     validParentheses :: String -> Bool
 
     validParentheses string = [] == foldr (\chr acc -> if chr == '(' then
-                                                                 if length acc == 0 || take 1 acc /= ")" then
-                                                                   ['N']
-                                                                 else
-                                                                   drop 1 acc
-                                                               else
-                                                                   ')': acc ) [] string
+                                                         if length acc == 0 || take 1 acc /= ")" then
+                                                           ['N']
+                                                         else
+                                                           drop 1 acc
+                                                       else
+                                                         ')': acc ) [] string
 
 
 
