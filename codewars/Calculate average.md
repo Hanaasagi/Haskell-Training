@@ -1,10 +1,12 @@
-####Description:  
+#### Description:  
 Write function avg which calaculates average of numbers in given list.  
 
 
-####Solution:  
+#### Solution:  
 
-    module Average where
+```Haskell
+module Average where
 
-    avg :: [Float] -> Float
-    avg l = sum(l) / fromIntegral (length l) :: Float
+avg :: [Float] -> Float
+avg l = sum(l) / fromIntegral (length l) :: Float
+```

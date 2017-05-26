@@ -1,4 +1,4 @@
-####Description:
+#### Description:
 
 The number 89 is the first integer with more than one digit that fulfills the property partially introduced in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number.
 
@@ -17,17 +17,19 @@ If there are no numbers of this kind in the range [a, b] the function should out
 Enjoy it!!
 
 
-####Solution:
+#### Solution:
 
-    module Codewars.G964.Sumdigpow where
+```Haskell
+module Codewars.G964.Sumdigpow where
 
-    dig :: Int -> [Int]
-    dig 0 = []
-    dig n = q : dig r
-      where (r, q) = (n `quotRem` 10)
+dig :: Int -> [Int]
+dig 0 = []
+dig n = q : dig r
+  where (r, q) = (n `quotRem` 10)
 
-    sumDigPow :: Int -> Int -> [Int]
-    sumDigPow a b = filter (\num ->num == pow 0 (listWithIndex $ dig num)) [a..b]
-      where
-        pow = foldl (\acc (index, n) -> acc + n ^ index)
-        listWithIndex = zip [1..] . reverse
+sumDigPow :: Int -> Int -> [Int]
+sumDigPow a b = filter (\num ->num == pow 0 (listWithIndex $ dig num)) [a..b]
+  where
+    pow = foldl (\acc (index, n) -> acc + n ^ index)
+    listWithIndex = zip [1..] . reverse
+```

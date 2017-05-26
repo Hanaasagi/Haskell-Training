@@ -1,12 +1,14 @@
-####Description:
+#### Description:
 
 Some numbers have funny properties. For example:
 
-    89 --> 8¹ + 9² = 89 * 1
+```
+89 --> 8¹ + 9² = 89 * 1
 
-    695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2
+695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2
 
-    46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+```
 
 Given a positive integer n written as abcd... (a, b, c, d... being digits) and a positive integer p we want to find a positive integer k, if it exists, such as the sum of the digits of n taken to the successive powers of p is equal to k * n. In other words:
 
@@ -16,34 +18,38 @@ If it is the case we will return k, if not return -1.
 
 Note: n, p will always be given as strictly positive integers.
 
-    digpow 89 1 should return 1 since 8¹ + 9² = 89 = 89 * 1
-    digpow 92 1 should return -1 since there is no k such as 9¹ + 2² equals 92 * k
-    digpow 695 2 should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
-    digpow 46288 3 should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+```
+digpow 89 1 should return 1 since 8¹ + 9² = 89 = 89 * 1
+digpow 92 1 should return -1 since there is no k such as 9¹ + 2² equals 92 * k
+digpow 695 2 should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
+digpow 46288 3 should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+```
 
+#### Solution:  
 
-####Solution:  
+```Haskell
+module Codewars.Kata.DigPow where
 
-    module Codewars.Kata.DigPow where
+digit :: Integer -> [Integer]
+digit 0 = []
+digit n = q : digit r
+  where (r, q) = n `quotRem` 10
 
-    digit :: Integer -> [Integer]
-    digit 0 = []
-    digit n = q : digit r
-      where (r, q) = n `quotRem` 10
+digpow :: Integer -> Integer -> Integer
+digpow n p = if q == 0 then r else -1
+  where
+    powSum = sum . map (\(p,num) -> num^p) . zip [p..] . reverse . digit $ n
+    (r, q) = powSum `quotRem` n
+```
 
-    digpow :: Integer -> Integer -> Integer
-    digpow n p = if q == 0 then r else -1
-      where
-        powSum = sum . map (\(p,num) -> num^p) . zip [p..] . reverse . digit $ n
-        (r, q) = powSum `quotRem` n
+#### Better Solution:  
 
+```Haskell
+module Codewars.Kata.DigPow where
+import Data.Char
 
-####Great Solution:  
-
-    module Codewars.Kata.DigPow where
-    import Data.Char
-
-    digpow :: Integer -> Integer -> Integer
-    digpow n p | sp `mod` n == 0  = sp `div` n
-               | otherwise        = -1
-      where sp = fromIntegral $ sum $ zipWith (^) (map digitToInt $ show n) [p..]
+digpow :: Integer -> Integer -> Integer
+digpow n p | sp `mod` n == 0  = sp `div` n
+           | otherwise        = -1
+  where sp = fromIntegral $ sum $ zipWith (^) (map digitToInt $ show n) [p..]
+```

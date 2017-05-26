@@ -1,4 +1,4 @@
-####Description:
+#### Description:
 
 Two tortoises named A and B must run a race. A starts with an average speed of 720 feet per hour. Young B knows she runs faster than A and furthermore has not finished her cabbage.
 
@@ -10,18 +10,22 @@ The result will be an array [h, mn, s] where h, mn, s is the time needed in hour
 
 Examples:
 
-    race(720, 850, 70) => [0, 32, 18]
-    race(80, 91, 37) => [3, 21, 49]
+```
+race(720, 850, 70) => [0, 32, 18]
+race(80, 91, 37) => [3, 21, 49]
+```
 
 ####Solution:
 
-    module Codewars.G964.Tortoise where
+```Haskell
+module Codewars.G964.Tortoise where
 
-    race :: Int -> Int -> Int -> Maybe (Int, Int, Int)
-    race v1 v2 g
-      | v1 > v2 = Nothing
-      | otherwise = Just (h, m, s)
-      where d = v2 - v1
-            t = 3600 * g `div` d
-            (h, m') = t `quotRem` 3600
-            (m, s)  = m' `quotRem` 60
+race :: Int -> Int -> Int -> Maybe (Int, Int, Int)
+race v1 v2 g
+  | v1 > v2 = Nothing
+  | otherwise = Just (h, m, s)
+  where d = v2 - v1
+        t = 3600 * g `div` d
+        (h, m') = t `quotRem` 3600
+        (m, s)  = m' `quotRem` 60
+```
