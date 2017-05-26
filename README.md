@@ -1,2 +1,2 @@
-# Haskell-pratice
-pratice Haskell in Codewars
+# Haskell-Training
+training Haskell in Codewars
